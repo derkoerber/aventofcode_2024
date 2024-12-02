@@ -18,6 +18,21 @@ with open("input.txt", 'r') as file:
 list1.sort()
 list2.sort()
 
+distances: List[int] = []
+
+
+for idx, pointer1 in enumerate(list1):
+    pointer2 = list2[idx]
+    if pointer1 > pointer2:
+        distances.append(pointer1 - pointer2)
+    else:
+        distances.append(pointer2 - pointer1)
+
+sumDis: int = 0
+
+for distance in distances:
+    sumDis += distance
+
 similarities: List[int] = []
 
 for idx, pointer1 in enumerate(list1):
@@ -32,9 +47,14 @@ for idx, pointer1 in enumerate(list1):
             break
     similarities.append(pointer1 * count)
 
-sum: int = 0
+    distances: List[int] = []
+
+
+sumSim: int = 0
 
 for similarity in similarities:
-    sum += similarity
+    sumSim += similarity
 
-print(sum)
+
+print(f"summary distance {sumDis}")
+print(f"summary similarity {sumSim}")
